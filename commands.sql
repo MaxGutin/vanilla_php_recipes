@@ -28,35 +28,22 @@ CREATE TABLE IF NOT EXISTS `groups`
     `updated_at`  TIMESTAMP    NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`)
 );
-CREATE TABLE IF NOT EXISTS `group_user`
-(
-    `id`         INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    `user_id`    INT UNSIGNED NOT NULL,
-    `group_id`  INT UNSIGNED NOT NULL,
-    `created_at` TIMESTAMP    NULL DEFAULT CURRENT_TIMESTAMP,
-    `updated_at` TIMESTAMP    NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (`id`)
-);
-CREATE TABLE IF NOT EXISTS `message_categories`
+CREATE TABLE IF NOT EXISTS `post_categories`
 (
     `id`         INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `parent_id`  INT UNSIGNED NULL,
     `name`       VARCHAR(255) NOT NULL,
-    `color`      CHAR(7)      NULL,
-    `user`       VARCHAR(255) NULL,
     `created_at` TIMESTAMP    NULL DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP    NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`)
-);
-CREATE TABLE IF NOT EXISTS `messages`
+    );
+CREATE TABLE IF NOT EXISTS `posts`
 (
     `id`          BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
     `category_id` INT UNSIGNED    NULL,
-    `user`        VARCHAR(255)    NOT NULL,
-    `recipient`   VARCHAR(255)    NULL,
+    `user`        VARCHAR(255)    NULL,
     `header`      VARCHAR(255)    NULL,
-    `message`     TEXT            NULL,
-    `read`        BOOLEAN         NOT NULL DEFAULT 0,
+    `content`     TEXT            NULL,
     `created_at`  TIMESTAMP       NULL     DEFAULT CURRENT_TIMESTAMP,
     `updated_at`  TIMESTAMP       NULL     DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`)

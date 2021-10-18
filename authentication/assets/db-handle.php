@@ -25,21 +25,6 @@ try {
 
 // SQL-constants
 // ************* Users section ***************************************
-const SQL_CREATE_USERS_TABLE = '
-	CREATE TABLE IF NOT EXISTS users (
-		id INT UNSIGNED AUTO_INCREMENT NOT NULL,
-		active BOOLEAN NOT NULL DEFAULT \'0\',
-		role VARCHAR(50) NOT NULL DEFAULT \'user\',
-		name VARCHAR(255) NOT NULL,
-		login VARCHAR(255) NOT NULL UNIQUE,
-		email VARCHAR(255) NOT NULL UNIQUE,
-		password VARCHAR(255) NOT NULL,
-		verify_code CHAR(32) NOT NULL,
-		token CHAR(32),
-		PRIMARY KEY (id)
-	)
-';
-
 const SQL_LOGIN = '
     SELECT *
     FROM users
@@ -56,12 +41,6 @@ const SQL_EMAIL = '
     SELECT *
     FROM users
     WHERE email = :email
-';
-
-const SQL_PASSWORD = '
-    SELECT *
-    FROM users
-    WHERE password = :password
 ';
 
 const SQL_VERIFY_CODE = '
@@ -127,3 +106,29 @@ const SQL_UPDATE_USER_EXTENDED = '
 
 const SQL_DELETE_USER = 'DELETE FROM users WHERE login = :login';
 
+
+
+// ************* Posts section ***************************************
+const SQL_GET_POSTS = 'SELECT * FROM posts WHERE user = :id';
+
+const SQL_GET_POST = '
+    SELECT *
+    FROM posts
+    WHERE id = :id AND user = :user
+';
+
+const SQL_DELETE_POST = 'DELETE FROM posts WHERE id = :id';
+
+const SQL_UPDATE_POST = '
+    UPDATE posts
+    SET
+      header = :header,
+      content = :content
+    WHERE
+      id = :id
+';
+
+const SQL_INSERT_POST = '
+    INSERT INTO posts (user, header, content)
+    VALUE (:user, :header, :content)
+';
