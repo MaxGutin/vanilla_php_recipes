@@ -8,7 +8,7 @@
     <title>Sing Up</title>
 </head>
 <body>
-<form action="assets/singup.php" method="post">
+<form action="assets/singup-handle.php" method="post">
     <p>
         <input type="text" id="name" name="name" required>
         <label for="name">Name</label>

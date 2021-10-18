@@ -1,7 +1,7 @@
 <?php
 // Redirect if session is active
 if (isset($_SESSION['user']['login']) OR isset($_COOKIE['login'])) {
-    header('Location: user.php');
+    header('Location: user');
 }
 ?>
 <!doctype html>
@@ -14,7 +14,7 @@ if (isset($_SESSION['user']['login']) OR isset($_COOKIE['login'])) {
     <title>Index</title>
 </head>
 <body>
-<form action="assets/singin.php" method="post">
+<form action="assets/singin-handle.php" method="post">
     <p>
         <input type="text" id="login" name="login" autofocus>
         <label for="login">login</label>

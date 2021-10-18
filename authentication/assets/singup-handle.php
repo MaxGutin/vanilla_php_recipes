@@ -14,7 +14,7 @@
  */
 
 session_start();
-require_once 'dbh.php';
+require_once 'db-handle.php';
 require_once 'validate.php';
 
 $user = [
@@ -91,7 +91,7 @@ try {
     require_once 'make-session.php';
 
     // Send verification code to user's e-mail
-    header('Location: code_sender.php');
+    header('Location: code_sender');
     
     
 } catch (PDOException $e) {

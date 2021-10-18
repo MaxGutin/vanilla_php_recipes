@@ -1,4 +1,5 @@
 <?php
+session_start();
 function logout()
 {
     $_SESSION = array();
@@ -8,6 +9,6 @@ function logout()
     unset($_COOKIE['token']);
     setcookie('login', '', time()-3600);
     setcookie('token', '', time()-3600);
-    header('Location: index.php');
+    header('Location: /index');
 }
 logout();

@@ -11,7 +11,7 @@
  */
 
 session_start();
-require_once 'dbh.php';
+require_once 'db-handle.php';
 require_once 'validate.php';
 
 $form_data = array(
@@ -34,9 +34,9 @@ try {
         if (password_verify($form_data['password'], $user['password'])) { // and check password.
 
             // Cookie - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            require_once 'assets/make-session.php';
+            require_once 'make-session.php';
 
-            header('Location: ./user.php'); // and redirect to task list page.
+            header('Location: /user?message=login'); // and redirect to task list page.
 
         } else echo "Wrong login or password."; // Wrong password or the user foes not need know about it
 

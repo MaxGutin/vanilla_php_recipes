@@ -12,7 +12,7 @@ if (empty($_SESSION['user']['login']) OR $_SESSION['user']['login'] == null) {
 
     // if cookie is empty
     if (empty($_COOKIE['login']) OR empty($_COOKIE['token'])) {
-        header('Location: index.php?empty_cookie');
+        header('Location: index?message=empty_cookie');
     } else {
 
         // Make session
@@ -28,7 +28,7 @@ if (empty($_SESSION['user']['login']) OR $_SESSION['user']['login'] == null) {
                 $_SESSION['user'] = $user;  // Make session
             } else {
                 // When cookies not find in DB
-                header('Location: index.php?logout&wrong_cookie');
+                header('Location: logout?message=wrong_cookie');
             }
         } catch (PDOException $e) {
             echo '= PDO EXCEPTION: =' . $e->getMessage();
@@ -44,7 +44,7 @@ if ($_SESSION['user']['active'] == 0) {?>
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--12-col">
             <h1>Please activate your account</h1>
-            <p><a href="./code_sender.php">Resend e-mail confirmation.</a></p>
+            <p><a href="/assets/code_sender.php">Resend e-mail confirmation.</a></p>
         </div>
     </div>
     <?php
